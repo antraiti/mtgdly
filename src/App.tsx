@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
-
+// TODO: add in formats
+// TODO: add placeholder for colorless
+// TODO: up down indicators
 
 const getColorForCompare = (goal: any, item: any) => {
   if (!Array.isArray(item)) {
