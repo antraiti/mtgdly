@@ -140,10 +140,10 @@ function CardGuesser(props: CardGuesserProps) {
                 <td className={randomCard!.name == cg.name ? 'bg-green-800' : ''}>{cg.name}</td>
                 <td className={getColorForCompare(randomCard!.rarity, cg.rarity)}>{cg.rarity}</td>
                 <td className={getColorForCompare(randomCard!.set, cg.set )}>{cg.set}</td>
-                <td className={getColorForCompare(randomCard!.cmc, cg.cmc)}>{cg.cmc + " " + NumericCompareIndicator(randomCard!.cmc, cg.cmc)}</td>
+                <td className={getColorForCompare(randomCard!.cmc, cg.cmc)}>{cg.cmc + NumericCompareIndicator(randomCard!.cmc, cg.cmc)}</td>
                 <td className={getColorForCompare(randomCard!.color_identity, cg.color_identity)}>{cg.color_identity}</td>
                 <td className={getColorForCompare(randomCard!.types, cg.types)}>{cg.types.join(", ")}</td>
-                <td className={getColorForCompare(randomCard!.released_at, cg.released_at)}>{cg.released_at + " " + NumericCompareIndicator(randomCard!.released_at, cg.released_at)}</td>
+                <td className={getColorForCompare(randomCard!.released_at, cg.released_at)}>{cg.released_at + NumericCompareIndicator(randomCard!.released_at, cg.released_at)}</td>
             </tr>)}
             </tbody>
         </table>

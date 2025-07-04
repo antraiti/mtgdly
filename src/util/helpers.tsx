@@ -38,11 +38,11 @@ export const getEmojiFromColor = (color: string) => {
 }
 
 export const NumericCompareIndicator = (goal: number, item:  number ) => {
-  if (goal === item) return;
+  if (goal === item) return "";
 
   if (goal > item) {
-    return "↑";
+    return " ↑";
   } else {
-    return "↓";
+    return " ↓";
   }
 }
