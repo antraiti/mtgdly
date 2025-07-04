@@ -24,7 +24,7 @@ function CardGuesser(props: CardGuesserProps) {
 
         if (props.filter == "edh") return cd.edhrec_rank <= 1000 && cd.edhrec_rank > 0
 
-        return cd[props.filter]
+        return cd[props.filter] === "True"
     }));
   }, [props.cardData, props.filter]);
 
