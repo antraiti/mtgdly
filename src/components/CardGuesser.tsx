@@ -93,7 +93,7 @@ function CardGuesser(props: CardGuesserProps) {
     }
 
   return (
-    <div className="self-center">
+    <div className="self-center w-full max-w-4xl">
         <div className="dropdown dropdown-start p-5 w-full">
             {!completed && <input tabIndex={0} className='input p-5 md:w-full' list="card-names" id="card-name-choice" name="card-name-choice" value={searchVal} onChange={e => setSearchVal(e.target.value)} autoComplete="off"/>}
             <ul tabIndex={0} className='dropdown-content z-10 menu bg-base-100 rounded-box flex-nowrap overflow-auto md:w-full'>
