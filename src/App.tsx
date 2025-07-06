@@ -46,18 +46,18 @@ function App() {
   }
 
   return (
-        <div className='flex flex-col justify-start'>
-          <p className='pb-10 text-7xl'>MTGDLY</p>
+        <div className='flex flex-col justify-start w-screen max-w-7xl'>
+          <p className='pb-10 text-6xl md:text-7xl'>MTGDLY</p>
           {!cardFilter && 
             <div>
               <h3>Choose a cardpool</h3>
-              <div className='flex'>
-                  <button className='btn' onClick={_ => setCardFilter("none")}>All</button>
-                  <button className='btn' onClick={_ => setCardFilter("standard")}>Standard</button>
-                  <button className='btn' onClick={_ => setCardFilter("pioneer")}>Pioneer</button>
-                  <button className='btn' onClick={_ => setCardFilter("modern")}>Modern</button>
-                  <button className='btn' onClick={_ => setCardFilter("legacy")}>Legacy</button>
-                  <button className='btn' onClick={_ => setCardFilter("edh")}>EDH 1k</button>
+              <div className='flex justify-center align-middle items-center flex-col md:flex-row'>
+                  <button className='btn w-24' onClick={_ => setCardFilter("none")}>All</button>
+                  <button className='btn w-24' onClick={_ => setCardFilter("standard")}>Standard</button>
+                  <button className='btn w-24' onClick={_ => setCardFilter("pioneer")}>Pioneer</button>
+                  <button className='btn w-24' onClick={_ => setCardFilter("modern")}>Modern</button>
+                  <button className='btn w-24' onClick={_ => setCardFilter("legacy")}>Legacy</button>
+                  <button className='btn w-24' onClick={_ => setCardFilter("edh")}>EDH 1k</button>
               </div>
             </div>
           }

@@ -93,10 +93,10 @@ function CardGuesser(props: CardGuesserProps) {
     }
 
   return (
-    <div>
-        <div className="dropdown dropdown-start p-5">
-            {!completed && <input tabIndex={0} className='input w-xl' list="card-names" id="card-name-choice" name="card-name-choice" value={searchVal} onChange={e => setSearchVal(e.target.value)} autoComplete="off"/>}
-            <ul tabIndex={0} className='dropdown-content w-full z-10 menu bg-base-100 rounded-box flex-nowrap overflow-auto'>
+    <div className="self-center">
+        <div className="dropdown dropdown-start p-5 w-full">
+            {!completed && <input tabIndex={0} className='input p-5 md:w-full' list="card-names" id="card-name-choice" name="card-name-choice" value={searchVal} onChange={e => setSearchVal(e.target.value)} autoComplete="off"/>}
+            <ul tabIndex={0} className='dropdown-content z-10 menu bg-base-100 rounded-box flex-nowrap overflow-auto md:w-full'>
             {cardData.filter((cd: any) => searchVal.length > 0 && cd.name.toLowerCase().indexOf(searchVal.toLowerCase()) >= 0 && !cardGuesses.find(cg => cg.oracle_id === cd.oracle_id))
                 .slice(0, 10)
                 .map((cd: any) => <li key={cd.name}>
@@ -124,26 +124,26 @@ function CardGuesser(props: CardGuesserProps) {
         <table className="table">
             <thead>
                 <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Rarity</th>
-                    <th className='w-12'>Set</th>
-                    <th>MV</th>
-                    <th>Color Id</th>
-                    <th>Types</th>
-                    <th>Release Year</th>
+                    <th className="p-1 sm:p-2 text-center"></th>
+                    <th className="p-1 sm:p-2 text-center">Name</th>
+                    <th className="p-1 sm:p-2 text-center">Rarity</th>
+                    <th className="p-1 sm:p-2 text-center">Set</th>
+                    <th className="p-1 sm:p-2 text-center">MV</th>
+                    <th className="p-1 sm:p-2 text-center">Color Id</th>
+                    <th className="p-1 sm:p-2 text-center">Types</th>
+                    <th className="p-1 sm:p-2 text-center">Year</th>
                 </tr>
             </thead>
             <tbody>
             {cardGuesses.map((cg:any) => <tr key={cg.name}>
                 <td><img className='h-32' src={cg.image}/></td>
                 <td className={randomCard!.name == cg.name ? 'bg-green-800' : ''}>{cg.name}</td>
-                <td className={getColorForCompare(randomCard!.rarity, cg.rarity)}>{cg.rarity}</td>
-                <td className={getColorForCompare(randomCard!.set, cg.set )}>{cg.set}</td>
-                <td className={getColorForCompare(randomCard!.cmc, cg.cmc)}>{cg.cmc + NumericCompareIndicator(randomCard!.cmc, cg.cmc)}</td>
-                <td className={getColorForCompare(randomCard!.color_identity, cg.color_identity)}>{cg.color_identity}</td>
-                <td className={getColorForCompare(randomCard!.types, cg.types)}>{cg.types.join(", ")}</td>
-                <td className={getColorForCompare(randomCard!.released_at, cg.released_at)}>{cg.released_at + NumericCompareIndicator(randomCard!.released_at, cg.released_at)}</td>
+                {tableItemTemplate(cg.rarity, randomCard!.rarity)}
+                {tableItemTemplate(cg.set, randomCard!.set)}
+                {tableItemTemplate(cg.cmc, randomCard!.cmc, cg.cmc + NumericCompareIndicator(randomCard!.cmc, cg.cmc))}
+                {tableItemTemplate(cg.color_identity, randomCard!.color_identity)}
+                {tableItemTemplate(cg.types, randomCard!.types, cg.types.join(", "))}
+                {tableItemTemplate(cg.released_at, randomCard!.released_at, cg.released_at + NumericCompareIndicator(randomCard!.released_at, cg.released_at))}
             </tr>)}
             </tbody>
         </table>
@@ -153,3 +153,9 @@ function CardGuesser(props: CardGuesserProps) {
 }
 
 export default CardGuesser
+
+const tableItemTemplate = (cardVal: string | number | string[], goalVal: string | number | string[], displayVal?: string) => {
+    return (
+        <td className="h-32 p-0"><div className={"ml-1 p-1 sm:p-2 h-32 flex flex-col justify-center " + getColorForCompare(goalVal, cardVal)}><p className="text-center">{displayVal ?? cardVal}</p></div></td>
+    )
+}
